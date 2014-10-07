@@ -26,6 +26,7 @@ Vega    (Volatitly)     = the rate of change in the price of an option for a uni
 
 At the time when the contract is initiated, at least one of these series of cash flows is determined by an uncertain variable such as a floating interest rate, foreign exchange rate, equity price, or commodity price.
 
+----
 future: have to buy on agreed price (no cash down)
 
 option: optional, can exercise if favorable (need cash down)
