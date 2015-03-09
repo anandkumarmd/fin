@@ -11,6 +11,9 @@ time
 
 interest rate
 
+Alpha -->>
+Beta  -->>
+
 sensivity (rate of change of px [mktpx,ir,time,volatitly])
 --------
 Δ Delta(mktpx underlying)= the change in the price of the option per unit change in the price of the underlying
