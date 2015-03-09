@@ -29,4 +29,5 @@ At the time when the contract is initiated, at least one of these series of cash
 ----
 future: have to buy on agreed price (no cash down)
 
-option: optional, can exercise if favorable (need cash down)
+option: optional, can exercise if favorable (need cash down) witer sells, hodler can exercise option
+        stkprice + permium + quantity + mature/exercise time
