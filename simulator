@@ -5,7 +5,9 @@ Commodities
 Forex
 Derivatives (like Futures or Options)
 
-For the moment, I will assume you're interested in stocks... if so, take a look at Ninja Trader, which offers these features for free. You can get free end-of-day stock data from Yahoo Finance, which is sufficient for longer-term trading timelines; keep in mind that the shorter the trading cycle, the more stringent your data resolution needs to be.
+For the moment, I will assume you're interested in stocks... if so, take a look at Ninja Trader, which offers these features
+for free. You can get free end-of-day stock data from Yahoo Finance, which is sufficient for longer-term trading timelines;
+keep in mind that the shorter the trading cycle, the more stringent your data resolution needs to be.
 
 If you are willing to put several thousand into a trading account, any number of brokers will be happy to send you live market intra-day market feeds; but you don't need money in an account for paper trading (at least with my broker). I think the broker that is most flexible for programmers is Interactive Brokers. You can get sub-second data from them via an API, just understand they won't give you Tick-level granularity; they summarize their feeds, the specific details vary so it's better just to talk to them if you have tight granularity requirements. As for off-line simulation, you can do that with Ninja Trader, Interactive Brokers, and many other online brokers (see What online brokers offer APIs?).
 
