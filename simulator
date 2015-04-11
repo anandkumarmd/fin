@@ -1,0 +1,51 @@
+
+Stocks
+Bonds
+Commodities
+Forex
+Derivatives (like Futures or Options)
+
+For the moment, I will assume you're interested in stocks... if so, take a look at Ninja Trader, which offers these features for free. You can get free end-of-day stock data from Yahoo Finance, which is sufficient for longer-term trading timelines; keep in mind that the shorter the trading cycle, the more stringent your data resolution needs to be.
+
+If you are willing to put several thousand into a trading account, any number of brokers will be happy to send you live market intra-day market feeds; but you don't need money in an account for paper trading (at least with my broker). I think the broker that is most flexible for programmers is Interactive Brokers. You can get sub-second data from them via an API, just understand they won't give you Tick-level granularity; they summarize their feeds, the specific details vary so it's better just to talk to them if you have tight granularity requirements. As for off-line simulation, you can do that with Ninja Trader, Interactive Brokers, and many other online brokers (see What online brokers offer APIs?).
+
+BONUS MATERIAL
+
+Since you're offering +200, I will share a bit more that you might be able to use... Keep it or toss in the trash for whatever value it brings.
+
+Trading Timeframe
+
+As a general rule, the shorter the timeframe, the more difficult the trades, and the harder it is to consistently make money. If you're unsure where to start with timelines, look at trading cycles of days or weeks at a time; then if you see too many opportunities passing you by, refine your system to a smaller timeline. The other thing to consider is how often you want to touch this code and tweak algorithms. The general rule is, as the trading cycles get shorter, you do more calibration and maintenance on your algorithms. It is not that unusual to find an algorithmic trader who wrote a good Swing-Trading platform that has worked as-is for the last decade. On the other hand, Day Trading Algorithms tend to require more care and feeding based on changes in market conditions.
+
+Trading Style
+
+Closely related to timelines are your trading tactics. Are you:
+
+Trend-Following
+Swing-Trading
+Day Trading
+Scalping
+Sub-pennying
+Using Statistical Arbitrage
+Playing Options
+Trade Management / Mindset
+
+Trade management is a rather big topic, and one you'll find addressed in-depth if you lurk around trader boards like Elite Trader. While it may sound out of place to discuss some of this in the same thread about automated trading platforms, I'm sure you'd agree that your assumptions and attitude have insidious ways of leeching into your code. I will share a few things off the top of my head:
+
+Success is primarily about preventing losing trades. Good trades take care of themselves.
+Always trade with a stop-loss. Conventional wisdom is, "Your first loss is your smallest loss". If things start going south, figure out a way to consistently get out while keeping most of your previous profits; holding losers is the fast path to becoming a boiled frog.
+There is no such thing as "Too High" or "Too low". The market moves in herd-mentality and doesn't care what you think it should be doing.
+Closely related to point "3": Trade with the long-term trend. Fighting the trend (affectionately known as "counter-trending") may sound attractive to natural contrarians, but you need to be very good to do it well. Trading is enough work without trying to counter-trend.
+Trading within the hour after a Federal Reserve market announcement is very difficult; I think it's just better to be out of the market. The quick profits can look seductive, but this is where the pros love to eat the amateur traders; brutal reversals can develop within a couple of minutes.
+Avoid trading on margin unless you have a proven technique that you have backtested with at least a couple years of data.
+The first thrity-minutes and last hour of regular trading can see rapid changes in volatility.
+Regarding profit taking, "Bulls get fed, hogs get slaughtered"
+If you find that you are not making profits, consider evaluating your trading frequency; reducing your trades to a minimum is key to success, otherwise, slippage, commissions and fees on junk trades will eat your profits.
+Due to computational delays / processing time and partial order fills, limit orders are rather challenging to manage and pretty close to minutia; algorithmic traders have much bigger fish to fry.
+Coding
+
+Log every data point and decision you make in your code; three logging levels works for me. Trading is an inexact task, and tiny changes can blow up your previously-profitable algorithm. If something blows up, you need a way to compare against what was working.
+Prototype in a scripting language; if something is slow, you can always offload to a compiler later. I think python is a fantastic for quantitative finance... mature unit-testing, C / C++ integration, numpy, pyplot and pandas are winners for me.
+More pandas plugs... (pandas video), also see: Compute a compounded return series in Python
+I started off with plain-ole csv, but I'm in process of migrating to HDF5 for tick data archives
+Trade-simulation is deceptive: Simulated trades don't have problems filling due to low-liquidity or high-demand for the instrument; depending on market conditions, my real trades can see two or three seconds delay from the time I send the order to the time I get a fill. Simulated trades also don't get data blackouts; be sure to include sudden data loss (and how to recover) in your plans. Lower-cost brokers tend to suffer more blips and blackouts, but if your timeframe is longer, it may be something you can ignore.
